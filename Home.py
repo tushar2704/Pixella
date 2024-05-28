@@ -20,29 +20,67 @@ from langchain_core.messages import HumanMessage
 from langchain_community.tools import DuckDuckGoSearchRun
 search_tool = DuckDuckGoSearchRun()
 from fpdf import FPDF
-
-
-
 #From src
-from src.agents import *
-from src.task import *
-from src.crew import *
+# from src.agents import *
+# from src.task import *
+# from src.crew import *
+from src.crew import writing_crew_1
+from src.components.navigation import *
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 ##################################################################################################
-#Setting up Llama3
+#Setting up Llama3 via Ollama server @http://localhost:11434/v1 
 os.environ["OPENAI_API_KEY"] = "NA"
 
 llm = ChatOpenAI(
     model = "crewai-llama3",
     base_url = "http://localhost:11434/v1")
 ##################################################################################################
+#Streamlit Page Setup
+page_config("Botimmus", "🤖", "wide")
+custom_style()
+st.sidebar.image('./src/logo.png')
 
 
-writing_crew_1= Crew(
-    agents=[planner, writer, editor],
-    tasks=[plan, write, edit],
-    verbose=2
-)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+topic=input("Enter the topic: ")
+
+
+results = writing_crew_1.kickoff(inputs={"topic": topic})
