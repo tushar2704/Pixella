@@ -23,11 +23,6 @@ from src.agents import planner, writer, editor
 
 
 
-
-
-
-
-
 ##################################################################################################
 #Setting up Llama3
 os.environ["OPENAI_API_KEY"] = "NA"

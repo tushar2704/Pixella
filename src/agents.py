@@ -55,7 +55,7 @@ planner = Agent(
               "Your work is the basis for "
               "the Content Writer to write an article on this topic.",
     llm=llm,
-    allow_delegation=False,
+    allow_delegation=False,tools=[search_tool],
  verbose=True
 )
 
@@ -78,7 +78,7 @@ writer = Agent(
               "You acknowledge in your opinion piece "
               "when your statements are opinions "
               "as opposed to objective statements.",
-    allow_delegation=False,
+    allow_delegation=False,tools=[search_tool],
     llm=llm,
     verbose=True
 )
@@ -96,7 +96,7 @@ editor = Agent(
               "when providing opinions or assertions, "
               "and also avoids major controversial topics "
               "or opinions when possible.",
-    llm=llm,
+    llm=llm, tools=[search_tool],
     allow_delegation=False,
     verbose=True
 )
